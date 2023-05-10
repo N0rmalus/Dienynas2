@@ -174,6 +174,7 @@ void isvesti(vector<Studentas>& studentai) {
     vector<Studentas> loss;
     int strategija;
 
+    ofstream raso("operatorius.txt");
     ofstream rasoL("luzeriai.txt");
     ofstream rasoW("neluzeriai.txt");
     rasoL << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" << "Galutinis (Med.)" << endl;
@@ -183,6 +184,10 @@ void isvesti(vector<Studentas>& studentai) {
 
     cout << "Kokia rusiavimo strategija norite naudoti? (1 / 2): ";
     cin >> strategija; cout << endl;
+
+    // Duomenų išvedimas naudojant cout operatorių
+    for (const auto& s : studentai)
+        raso << s << endl;
 
     // Mokinių duomenų išrašymas
     switch (strategija) {

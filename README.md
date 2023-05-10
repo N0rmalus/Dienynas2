@@ -2,7 +2,34 @@
 
 Tai paprasta C++ programa, kurioje vartotojas įrašinėja arba skaito (nuo v0.2) iš failo naujus mokinius. Mokinių duomenys susideda iš namų darbų ir egzamino rezultatų. Vartotojas turi galimybę pasirinkti, ar mokinio rezultatai bus išrašomi atsitiktinai, ar rankiniu būdu. Galiausiai, mokiniai yra išrašomi lentelėje su galutiniais balais, kurie apskaičiuojami dviem būdais, pagal vartotojo pasirinkimą.
 
-## v1.1 (naujausia)
+## v1.2 (naujausia)
+Šios versijos klasė yra papildyta naudojant **Rule of Five**. Atnaujinimus rasite čia:
+
+- Default constructor: Studentas()
+- Copy constructor: Studentas(const Studentas& other)
+- Move constructor: Studentas(Studentas&& other)
+- Copy assignment constructor: Studentas& operator=(const Studentas& other)
+- Move assignment constructor: Studentas& operator=(Studentas&& other)
+
+Taip pat pridėtas ir **std::ostream& operator<<** operatorius, kuris palengvina duomenų išvedimą.
+
+### Vykdymas su makefile (Windows)
+
+- [Įsidiegti MinGW](https://sourceforge.net/projects/mingw/)
+- Įtraukti MinGW/bin katalogą į **path**
+```bash
+    SETX PATH "MinGW/bin katalogo adresas"
+```
+- Įsidiegti mingw32-make
+```bash
+    mingw-get install mingw32-make
+```
+- Paleisti programa naudojant makefile
+```bash
+    mingw32-make
+```
+
+## v1.1
 Nuo šios versijos mokinių duomenys yra saugomi klasėje, negu prieš tai buvusioje struktūroje. Tikrinti **header.h** failą.
 
 ### Programos sparta 
@@ -27,17 +54,6 @@ Naudojama pirma rūšiavimo strategija
 |  Vieta diske          |  101 KB  |  97 KB    |  108 KB   |
 |  Naudojama atmintis   |  126 MB  |  183 MB   |  184 MB   |  
 
-### Vykdymas su makefile (Windows)
-
-- [Įsidiegti MinGW](https://sourceforge.net/projects/mingw/)
-- Įtraukti MinGW/bin katalogą į **path**
-```bash
-    SETX PATH "MinGW/bin katalogo adresas"
-```
-- Įsidiegti mingw32-make
-```bash
-    mingw-get install mingw32-make
-```
 - Paleisti programa naudojant makefile
 ```bash
     mingw32-make
