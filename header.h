@@ -9,41 +9,29 @@ class Studentas {
         double galutinis_vid, galutinis_med;
 
     public:
-        Studentas() : egzamino_rezultatas(0), galutinis_vid(0), galutinis_med(0) {}
-
-        Studentas(string v, string p) : vardas(v), pavarde(p), egzamino_rezultatas(0), galutinis_vid(0), galutinis_med(0) {}
-
-        Studentas(const Studentas& other) {
-            vardas = other.vardas;
-            pavarde = other.pavarde;
-            nd_rezultatai = other.nd_rezultatai;
-            egzamino_rezultatas = other.egzamino_rezultatas;
-            galutinis_vid = other.galutinis_vid;
-            galutinis_med = other.galutinis_med;
-        }
+        Studentas(string vardas, string pavarde, vector<int> nd_rezultatai, int egzamino_rezultatas, double galutinis_vid, double galutinis_med)
+            : vardas(vardas), pavarde(pavarde), nd_rezultatai(nd_rezultatai), egzamino_rezultatas(egzamino_rezultatas), galutinis_vid(galutinis_vid), galutinis_med(galutinis_med) {}
 
         // Setteriai
-        void set_vardas(string v) { vardas = v; }
-        void set_pavarde(string p) { pavarde = p; }
-        void set_egzamino_rezultatas(int e) { egzamino_rezultatas = e; }
-        void set_nd_rezultatai(const vector<int>& nd) { nd_rezultatai = nd; }
-
-        void set_galutinis_vid(double gv) { galutinis_vid = gv; }
-        void set_galutinis_med(double gm) { galutinis_med = gm; }
+        void setVardas(string vardas) {this->vardas = vardas;}
+        void setPavarde(string pavarde) {this->pavarde = pavarde;}
+        void setNdRezultatai(vector<int> nd_rezultatai) {this->nd_rezultatai = nd_rezultatai;}
+        void setEgzaminoRezultatas(int egzamino_rezultatas) {this->egzamino_rezultatas = egzamino_rezultatas;}
+        void setGalutinisVid(double galutinis_vid) {this->galutinis_vid = galutinis_vid;}
+        void setGalutinisMed(double galutinis_med) {this->galutinis_med = galutinis_med;}
 
         // Getteriai
-        inline string get_vardas() const { return vardas; }
-        inline string get_pavarde() const { return pavarde; }
-        inline int get_egzamino_rezultatas() const { return egzamino_rezultatas; }
-        inline vector<int> get_nd_rezultatai() const { return nd_rezultatai; }
-        inline double get_galutinis_vid() const { return galutinis_vid; }
-        inline double get_galutinis_med() const { return galutinis_med; }
-
-        ~Studentas() {}
+        string getVardas() const {return vardas;}
+        string getPavarde() const {return pavarde;}
+        vector<int> getNdRezultatai() const {return nd_rezultatai;}
+        int getEgzaminoRezultatas() const {return egzamino_rezultatas;}
+        double getGalutinisVid() const {return galutinis_vid;}
+        double getGalutinisMed() const {return galutinis_med;}
 };
 
 void generatorius(string failas, int kiek_studentu, int kiek_nd);
+void failo_skaitymas(vector<Studentas>& studentai);
+void atsitiktiniai_rez(string vardas, string pavarde, int kiek_nd, vector<Studentas>& studentai);
+void rasomi_rez(string vardas, string pavarde, bool is_naujo2, vector<Studentas>& studentai);
 void galutinis(vector<Studentas>& studentai);
-void atsitiktiniai_rez(int kiek_nd, Studentas& naujas_studentas);
-void rasomi_rez(bool is_naujo2, int nd_rezultatas, int egz_rez, Studentas& naujas_studentas);
 void isvesti(vector<Studentas>& studentai);

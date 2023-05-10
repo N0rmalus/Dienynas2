@@ -3,11 +3,11 @@
 
 int main() {
     vector<Studentas> studentai;
-    string vardas, pavarde, failas;
     int kiek_nd;
     char pasirinkimas, pasirinkimas2, skaityti;
     bool is_naujo = false, is_naujo2 = false;
 
+    auto sPrograma = std::chrono::high_resolution_clock::now();
     do {
         cout << "-----------------------------------------------------------------------" << endl;
         cout << "Duomenis skaityti is failo? (Y/N): ";
@@ -47,52 +47,17 @@ int main() {
                     continue;
                 }
             } while(true);
+            
+            auto sPrograma = std::chrono::high_resolution_clock::now();
+            failo_skaitymas(studentai);
 
-            cout << "Failu sarasas: "; system("ls *.txt");
-            cout << "Pasirinkite faila: ";
-            cin >> failas;
+            cout << "-----------------------------------------------------------------------" << endl;
 
-            ifstream skaito(failas);
-            if(!skaito.is_open()) {
-                cout << "Klaida: tokio failo [" << failas << "] nera." << endl;
-                
-                is_naujo = true;
-                continue;
-            } else {
-                // Praleisti pirmą eilutę
-                string headers;
-                getline(skaito, headers);
-
-                while (skaito >> vardas >> pavarde) {
-                    Studentas naujas_studentas(vardas, pavarde);
-                    // Studentas naujas_studentas();
-                    int nd_rezultatas;
-
-                    while (skaito >> nd_rezultatas) {
-                        if (nd_rezultatas < 1 || nd_rezultatas > 10) {continue;}
-                        cout << "Radau!" << endl;
-                        naujas_studentas.get_nd_rezultatai().push_back(nd_rezultatas);
-                        naujas_studentas.set_nd_rezultatai(naujas_studentas.get_nd_rezultatai());
-                        if (skaito.peek() == '\n') {break;}
-                    }
-                    if (naujas_studentas.get_nd_rezultatai().empty()) {
-                        cout << "Nerasta rezultatu [" << naujas_studentas.get_vardas() << " " << naujas_studentas.get_pavarde() << "]" << endl;
-                        continue;
-                    }
-                    naujas_studentas.set_egzamino_rezultatas(naujas_studentas.get_nd_rezultatai().back());
-                    naujas_studentas.get_nd_rezultatai().pop_back();
-
-                    studentai.push_back(naujas_studentas);
-                }
-
-                cout << "-----------------------------------------------------------------------" << endl;
-
-                skaito.close();
-
-                break;
-            }
+            break;
         } else if (skaityti == 'N' || skaityti == 'n') {
             do {
+                string vardas, pavarde;
+
                 cout << "-----------------------------------------------------------------------" << endl;
 
                 cout << "Iveskite studento varda: ";
@@ -100,17 +65,13 @@ int main() {
                 cout << "Iveskite studento pavarde: ";
                 cin >> pavarde; cout << endl;
 
-                Studentas naujas_studentas(vardas, pavarde);
-
-                int nd_rezultatas, egz_rez;
-
                 cout << "Generuoti mokinio rezultatus atsitiktinai? (Y/N): ";
                 cin >> pasirinkimas2;
 
-                if (pasirinkimas2 == 'Y' || pasirinkimas2 == 'y') {
-                    atsitiktiniai_rez(kiek_nd, naujas_studentas);
+                if(pasirinkimas2 == 'Y' || pasirinkimas2 == 'y') {
+                    atsitiktiniai_rez(vardas, pavarde, kiek_nd, studentai);
                 } else if (pasirinkimas2 == 'N' || pasirinkimas2 == 'n') {
-                    rasomi_rez(is_naujo, nd_rezultatas, egz_rez, naujas_studentas);
+                    rasomi_rez(vardas, pavarde, is_naujo2, studentai);
                 } else {
                     cout << "Tokio pasirinkimo [" << pasirinkimas2 << "] nera." << endl;
 
@@ -118,38 +79,33 @@ int main() {
                     continue;
                 }
 
-                if (naujas_studentas.get_nd_rezultatai().size() < 1) {
-                    cout << "Klaida: truksta rezultatu. [" << naujas_studentas.get_vardas() << " " << naujas_studentas.get_pavarde() << "] bus neirasytas." << endl;
-                }
-
                 cout << "-----------------------------------------------------------------------" << endl;
-
-                studentai.push_back(naujas_studentas);
 
                 do {
                     cout << "Ar norite ivesti nauja studenta? (Y/N): ";
                     cin >> pasirinkimas;
 
-                    if (pasirinkimas != 'N' && pasirinkimas != 'n' && pasirinkimas != 'Y' && pasirinkimas != 'y') {
+                    if(pasirinkimas != 'N' && pasirinkimas != 'n' && pasirinkimas != 'Y' && pasirinkimas != 'y') {
                         cout << "Tokio pasirinkimo [" << pasirinkimas << "] nera." << endl;
                     } else {break;}
-                } while (true);
+                } while(true);
 
                 is_naujo = false;
-            } while (is_naujo || pasirinkimas == 'Y' || pasirinkimas == 'y');
-        } else {
-            cout << "Tokio pasirinkimo [" << skaityti << "] nera." << endl;
-
-            is_naujo = true;
+            } while(is_naujo || pasirinkimas == 'Y' || pasirinkimas == 'y');
         }
-    } while(is_naujo);
-    
+    } while(is_naujo);  
+
     galutinis(studentai);
-    sort(studentai.begin(), studentai.end(), [](const Studentas& s1, const Studentas& s2) { 
-        return s1.get_vardas() < s2.get_vardas(); 
+    sort(studentai.begin(), studentai.end(), [](const Studentas& s1, const Studentas& s2) {
+        return s1.getVardas() < s2.getVardas();
     });
-    
+    auto ePrograma = std::chrono::system_clock::now();
+    std::chrono::duration<double> dPrograma = ePrograma - sPrograma;
     isvesti(studentai);
-    
+
+    cout << endl << "-----------------------------------------------------------------------" << endl;
+
+    // cout << "Programos veikimas uztruko " << dPrograma.count() << "s." << endl;
+
     return 0;
 }

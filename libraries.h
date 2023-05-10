@@ -12,7 +12,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
-#include <functional>
 
 using std::invalid_argument;
 using std::istringstream;

@@ -5,6 +5,28 @@ Tai paprasta C++ programa, kurioje vartotojas įrašinėja arba skaito (nuo v0.2
 ## v1.1 (naujausia)
 Nuo šios versijos mokinių duomenys yra saugomi klasėje, negu prieš tai buvusioje struktūroje. Tikrinti **header.h** failą.
 
+### Programos sparta 
+Naudojama pirma rūšiavimo strategija
+
+**class Studentas**
+|  Įrašų skaičius  |  Generavimas  |  Nuskaitymas  |  Rūšiavimas  |  Spausdinimas  |     Viso     |
+|------------------|---------------|---------------|--------------|----------------|--------------|
+|  **100 000**     |  0.987214s    |  0.65714s     |  0.063016s   |  1.81942s      |  2.65202s    |
+|  **1 000 000**   |  9.70519s     |  6.73351s     |  0.698157s   |  18.01s        |  22.5943s    |
+
+**struct Studentas**
+|  Įrašų skaičius  |  Generavimas  |  Nuskaitymas  |  Rūšiavimas  |  Spausdinimas  |     Viso     |
+|------------------|---------------|---------------|--------------|----------------|--------------|
+|  **100 000**     |  1.58336s     |  0.522118s    |  0.074017s   |  1.83231s      |  3.01666s    |
+|  **1 000 000**   |  17.3813s     |  4.81674s     |  0.887493s   |  17.82s        |  29.9599s    |
+
+### Flagų efektyvumas
+
+|  -------------------  |    O1    |     O2    |     O3    |
+|-----------------------|----------|-----------|-----------|
+|  Vieta diske          |  101 KB  |  97 KB    |  108 KB   |
+|  Naudojama atmintis   |  126 MB  |  183 MB   |  184 MB   |  
+
 ### Vykdymas su makefile (Windows)
 
 - [Įsidiegti MinGW](https://sourceforge.net/projects/mingw/)
