@@ -47,7 +47,7 @@ int main() {
                     continue;
                 }
             } while(true);
-            
+
             auto sPrograma = std::chrono::high_resolution_clock::now();
             failo_skaitymas(studentai);
 
@@ -79,8 +79,8 @@ int main() {
                     continue;
                 }
 
-                cout << "-----------------------------------------------------------------------" << endl;
-
+                cout << "-----------------------------------------------------------------------";
+                
                 do {
                     cout << "Ar norite ivesti nauja studenta? (Y/N): ";
                     cin >> pasirinkimas;

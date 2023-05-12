@@ -2,16 +2,8 @@
 
 Tai paprasta C++ programa, kurioje vartotojas įrašinėja arba skaito (nuo v0.2) iš failo naujus mokinius. Mokinių duomenys susideda iš namų darbų ir egzamino rezultatų. Vartotojas turi galimybę pasirinkti, ar mokinio rezultatai bus išrašomi atsitiktinai, ar rankiniu būdu. Galiausiai, mokiniai yra išrašomi lentelėje su galutiniais balais, kurie apskaičiuojami dviem būdais, pagal vartotojo pasirinkimą.
 
-## v1.2 (naujausia)
-Šios versijos klasė yra papildyta naudojant **Rule of Five**. Atnaujinimus rasite čia:
-
-- Default constructor: Studentas()
-- Copy constructor: Studentas(const Studentas& other)
-- Move constructor: Studentas(Studentas&& other)
-- Copy assignment constructor: Studentas& operator=(const Studentas& other)
-- Move assignment constructor: Studentas& operator=(Studentas&& other)
-
-Taip pat pridėtas ir **std::ostream& operator<<** operatorius, kuris palengvina duomenų išvedimą.
+## v1.5 (naujausia)
+Šioje versijoje įvesta nauja klasė **class Zmogas**, kuri yra abstrakti bazinė klasė klasei **class Studentas**. Šioje naujoje klasėje deklaruojama grynoji virtuali funkcija **rasoInfo()**, o v1.2 versioje buvę atributai **string vardas** ir **string pavarde** yra taip pat perkelti į šią naująją klasę.
 
 ### Vykdymas su makefile (Windows)
 
@@ -24,6 +16,22 @@ Taip pat pridėtas ir **std::ostream& operator<<** operatorius, kuris palengvina
 ```bash
     mingw-get install mingw32-make
 ```
+- Paleisti programa naudojant makefile
+```bash
+    mingw32-make
+```
+
+## v1.2 
+Šios versijos klasė yra papildyta naudojant **Rule of Five**. Atnaujinimus rasite čia:
+
+- Default constructor: Studentas()
+- Copy constructor: Studentas(const Studentas& other)
+- Move constructor: Studentas(Studentas&& other)
+- Copy assignment constructor: Studentas& operator=(const Studentas& other)
+- Move assignment constructor: Studentas& operator=(Studentas&& other)
+
+Taip pat pridėtas ir **std::ostream& operator<<** operatorius, kuris palengvina duomenų išvedimą.
+
 - Paleisti programa naudojant makefile
 ```bash
     mingw32-make

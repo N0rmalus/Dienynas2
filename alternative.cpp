@@ -185,9 +185,9 @@ void isvesti(vector<Studentas>& studentai) {
     cout << "Kokia rusiavimo strategija norite naudoti? (1 / 2): ";
     cin >> strategija; cout << endl;
 
-    // Duomenų išvedimas naudojant cout operatorių
+    // Duomenų išvedimas
     for (const auto& s : studentai)
-        raso << s << endl;
+        s.rasoInfo(raso);
 
     // Mokinių duomenų išrašymas
     switch (strategija) {
