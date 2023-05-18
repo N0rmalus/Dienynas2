@@ -1,0 +1,265 @@
+Tai paprasta C++ programa, kurioje vartotojas įrašinėja arba skaito (nuo v0.\+2) iš failo naujus mokinius. Mokinių duomenys susideda iš namų darbų ir egzamino rezultatų. Vartotojas turi galimybę pasirinkti, ar mokinio rezultatai bus išrašomi atsitiktinai, ar rankiniu būdu. Galiausiai, mokiniai yra išrašomi lentelėje su galutiniais balais, kurie apskaičiuojami dviem būdais, pagal vartotojo pasirinkimą.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md1}{}\doxysection{v1.\+5 (naujausia)}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md1}
+Šioje versijoje įvesta nauja klasė {\bfseries{class \mbox{\hyperlink{class_zmogas}{Zmogas}}}}, kuri yra abstrakti bazinė klasė klasei {\bfseries{class \mbox{\hyperlink{class_studentas}{Studentas}}}}. Šioje naujoje klasėje deklaruojama grynoji virtuali funkcija {\bfseries{raso\+Info()}}, o v1.\+2 versioje buvę atributai {\bfseries{string vardas}} ir {\bfseries{string pavarde}} yra taip pat perkelti į šią naująją klasę.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{Vykdymas su makefile (\+Windows)}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item \href{https://sourceforge.net/projects/mingw/}{\texttt{ Įsidiegti Min\+GW}}
+\item Įtraukti Min\+GW/bin katalogą į {\bfseries{path}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{SETX\ PATH\ "{}MinGW/bin\ katalogo\ adresas"{}}
+
+\end{DoxyCode}
+
+\item Įsidiegti mingw32-\/make 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw-\/get\ install\ mingw32-\/make}
+
+\end{DoxyCode}
+
+\item Paleisti programa naudojant makefile 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md3}{}\doxysection{v1.\+2}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md3}
+Šios versijos klasė yra papildyta naudojant {\bfseries{Rule of Five}}. Atnaujinimus rasite čia\+:
+
+
+\begin{DoxyItemize}
+\item Default constructor\+: \mbox{\hyperlink{class_studentas}{Studentas()}}
+\item Copy constructor\+: \mbox{\hyperlink{class_studentas}{Studentas(const Studentas\& other)}}
+\item Move constructor\+: \mbox{\hyperlink{class_studentas}{Studentas(\+Studentas\&\& other)}}
+\item Copy assignment constructor\+: \mbox{\hyperlink{class_studentas}{Studentas}}\& operator=(const Studentas\& other)
+\item Move assignment constructor\+: \mbox{\hyperlink{class_studentas}{Studentas}}\& operator=(\+Studentas\&\& other)
+\end{DoxyItemize}
+
+Taip pat pridėtas ir $\ast$$\ast$std\+::ostream\& operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}$\ast$$\ast$ operatorius, kuris palengvina duomenų išvedimą.
+
+
+\begin{DoxyItemize}
+\item Paleisti programa naudojant makefile 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md4}{}\doxysection{v1.\+1}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md4}
+Nuo šios versijos mokinių duomenys yra saugomi klasėje, negu prieš tai buvusioje struktūroje. Tikrinti {\bfseries{\mbox{\hyperlink{header_8h_source}{header.\+h}}}} failą.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{Programos sparta}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md5}
+Naudojama pirma rūšiavimo strategija
+
+{\bfseries{class \mbox{\hyperlink{class_studentas}{Studentas}}}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{100 000}}   &0.\+987214s   &0.\+65714s   &0.\+063016s   &1.\+81942s   &2.\+65202s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &9.\+70519s   &6.\+73351s   &0.\+698157s   &18.\+01s   &22.\+5943s   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{struct \mbox{\hyperlink{class_studentas}{Studentas}}}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{100 000}}   &1.\+58336s   &0.\+522118s   &0.\+074017s   &1.\+83231s   &3.\+01666s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &17.\+3813s   &4.\+81674s   &0.\+887493s   &17.\+82s   &29.\+9599s   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Flagų efektyvumas}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md6}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O1   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O2   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O3    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O1   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O2   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O3    }\\\cline{1-4}
+\endhead
+Vieta diske   &101 KB   &97 KB   &108 KB    \\\cline{1-4}
+Naudojama atmintis   &126 MB   &183 MB   &184 MB   \\\cline{1-4}
+\end{longtabu}
+
+
+
+\begin{DoxyItemize}
+\item Paleisti programa naudojant makefile 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md7}{}\doxysection{v1.\+0}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md7}
+Nuo šiol vartotojui galima pasirinkti, kurią rūšiavimo pagal galutinį balą strategiją naudoti (yra dvi). Taip pat, programą galima kompiliuoti naudojant {\bfseries{makefile}}\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{Rūšiavimo sparta}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md8}
+{\bfseries{Pirma strategija}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+:deque    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+:deque    }\\\cline{1-4}
+\endhead
+{\bfseries{1 000}}   &0.\+001001s   &0.\+001s   &0s    \\\cline{1-4}
+{\bfseries{10 000}}   &0.\+008002s   &0.\+006001s   &0.\+005s    \\\cline{1-4}
+{\bfseries{100 000}}   &0.\+080024s   &0.\+066015s   &0.\+04701s    \\\cline{1-4}
+{\bfseries{1 000 000}}   &0.\+896771s   &0.\+716163s   &0.\+48811s   \\\cline{1-4}
+\end{longtabu}
+
+
+{\bfseries{Antra strategija}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+:deque    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+:deque    }\\\cline{1-4}
+\endhead
+{\bfseries{1 000}}   &0.\+001s   &0s   &0.\+024005s    \\\cline{1-4}
+{\bfseries{10 000}}   &0.\+006001s   &0.\+002001s   &2.\+47536s    \\\cline{1-4}
+{\bfseries{100 000}}   &0.\+06757s   &0.\+033008s   &0.\+068015s    \\\cline{1-4}
+{\bfseries{1 000 000}}   &0.\+63579s   &0.\+396089s   &0.\+697947s   \\\cline{1-4}
+\end{longtabu}
+
+
+
+\begin{DoxyItemize}
+\item Paleisti programa naudojant makefile 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make\ vector}
+
+\end{DoxyCode}
+ arba 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make\ list}
+
+\end{DoxyCode}
+ arba 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mingw32-\/make\ deque}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md9}{}\doxysection{v0.\+5}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md9}
+Ši programos versija nesiskiria nuo praeitos (v0.\+4) versijos, tačiau šįkart studentų duomenys saugojami skirtingų tipų konteineriuose\+:
+
+
+\begin{DoxyItemize}
+\item std\+::vector
+\item std\+::list
+\item std\+::deque
+\end{DoxyItemize}
+
+{\bfseries{main\+Vector.\+cpp}} -\/ programos versija, kurioje studentų duomenys saugomi vektoriuose. {\bfseries{main\+List.\+cpp}} -\/ programos versija, kurioje studentų duomenys saugomi sąraše (list). {\bfseries{main\+Deque.\+cpp}} -\/ programos versija, kurioje studentų duomenys saugomi deque\textquotesingle{}uose.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{Programos sparta}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md10}
+{\bfseries{std\+::vector}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{1 000}}   &0.\+017004s   &0.\+005s   &0.\+001s   &0.\+019004s   &0.\+030006s    \\\cline{1-6}
+{\bfseries{10 000}}   &0.\+177039s   &0.\+051011s   &0.\+006001s   &0.\+185308s   &0.\+290332s    \\\cline{1-6}
+{\bfseries{100 000}}   &1.\+58336s   &0.\+522118s   &0.\+074017s   &1.\+83231s   &3.\+01666s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &17.\+3813s   &4.\+81674s   &0.\+887493s   &17.\+82s   &29.\+9599s   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{std\+::list}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{1 000}}   &0.\+017003s   &0.\+005001s   &0s   &0.\+017663s   &0.\+02773s    \\\cline{1-6}
+{\bfseries{10 000}}   &0.\+187042s   &0.\+04601s   &0.\+004994s   &0.\+188046s   &0.\+262065s    \\\cline{1-6}
+{\bfseries{100 000}}   &1.\+87843s   &0.\+48611s   &0.\+068015s   &1.\+78275s   &2.\+53592s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &15.\+3204s   &4.\+57347s   &0.\+697947s   &17.\+775s   &25.\+496s   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{std\+::deque}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{1 000}}   &0.\+022005s   &0.\+005001s   &0s   &0.\+019433s   &0.\+029436s    \\\cline{1-6}
+{\bfseries{10 000}}   &0.\+201045s   &0.\+04601s   &0.\+004s   &0.\+183041s   &0.\+282065s    \\\cline{1-6}
+{\bfseries{100 000}}   &1.\+58602s   &0.\+462868s   &0.\+042011s   &1.\+99253s   &3.\+10711s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &20.\+3368s   &4.\+60403s   &0.\+489109s   &17.\+7685s   &29.\+7822s   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{Sistemos parametrai}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md11}
+{\bfseries{Processor}} AMD Ryzen 7 2700X Eight-\/\+Core Processor, 3700 Mhz, 8 Core(s), 16 Logical Processor(s) {\bfseries{SSD}} XPG GAMMIX S11 Pro PCIe Gen3x4 M.\+2 2280 {\bfseries{RAM}} 16,0GB DDR4 Dual-\/\+Channel VENGEANCE® LPX @ 1064MHz
+
+\DoxyHorRuler{0}
+\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md13}{}\doxysection{v0.\+4}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md13}
+Nuo šios versijos vartotojas gali pats generuoti failus įrašydamas norimą mokinių ir namų darbų rezultatų kiekį. Taip pat, skaičiuojamas programos ir jos pagrindinių funkcijų veikimo laikas.
+
+{\bfseries{main.\+cpp}} -\/ pagrindinė programos dalis.
+
+{\bfseries{alternative.\+cpp}} -\/ papildoma programos dalis, kurioje laikomi funkcijų aprašymai.
+
+{\bfseries{generator.\+cpp}} -\/ papildoma programos dalis, kurioje laikoma failo generavimo funkcija.
+
+{\bfseries{\mbox{\hyperlink{header_8h_source}{header.\+h}}}} -\/ antraštinis failas, kuriame laikoma studento struktūra ir funkcijų antraštės.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{Programos sparta}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md14}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų skaičius   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Generavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Spausdinimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Viso    }\\\cline{1-6}
+\endhead
+{\bfseries{1 000}}   &0.\+017005s   &0.\+005989s   &0.\+000266   &0.\+020997s   &0.\+029998s    \\\cline{1-6}
+{\bfseries{10 000}}   &0.\+181041s   &0.\+049003s   &0.\+184041s   &0.\+184041s   &0.\+275053s    \\\cline{1-6}
+{\bfseries{100 000}}   &1.\+90779s   &0.\+488099s   &0.\+488099s   &1.\+83541s   &2.\+86863s    \\\cline{1-6}
+{\bfseries{1 000 000}}   &16.\+0106s   &4.\+68205s   &4.\+68205s   &18.\+5489s   &29.\+3834s   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md15}{}\doxysection{v0.\+3}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md15}
+Ši programos versija veikia taip pat kaip ir senesnė (v0.\+2) versija, tačiau šįkart ji parskirstyta po kelis failus\+:
+
+{\bfseries{main.\+cpp}} -\/ pagrindinė programos dalis.
+
+{\bfseries{alternative.\+cpp}} -\/ papildoma programos dalis, kurioje laikomi funkcijų aprašymai.
+
+{\bfseries{\mbox{\hyperlink{header_8h_source}{header.\+h}}}} -\/ antraštinis failas, kuriame laikoma studento struktūra ir funkcijų antraštės.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md16}{}\doxysection{v0.\+2}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md16}
+Ši programos versija nuo šiol turi tik vieną programos faila {\bfseries{main.\+cpp}}, kurioje mokinių duomenys saugomi vektoriuose.
+
+Vartotojas taip pat turi galimybę ne tik pridėti naujų mokinių rankiniu būdu, bet ir skaityti juos iš failų, tokių kaip {\bfseries{kursiokai.\+txt}}.\hypertarget{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md17}{}\doxysection{v0.\+1}\label{md__c___users_rokas__desktop__desktop__studijoms__objektinis_v20__r_e_a_d_m_e_autotoc_md17}
+Programa susideda iš dviejų dalių\+:
+
+{\bfseries{main\+Vector.\+cpp}} -\/ programos versija, kurioje studentų duomenys saugomi vektoriuose.
+
+{\bfseries{main\+Array.\+cpp}} -\/ programos versija, kurioje studentų duomenys saugomi masyvuose.
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{\mbox{\hyperlink{libraries_8h_source}{libraries.\+h}}}} -\/ failas, kuriame saugomos visos bibliotekos ir jų pagrindinės funkcijos, kurios yra reikalingos šiai programai veikti. 

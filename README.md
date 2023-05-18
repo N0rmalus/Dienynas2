@@ -2,7 +2,17 @@
 
 Tai paprasta C++ programa, kurioje vartotojas įrašinėja arba skaito (nuo v0.2) iš failo naujus mokinius. Mokinių duomenys susideda iš namų darbų ir egzamino rezultatų. Vartotojas turi galimybę pasirinkti, ar mokinio rezultatai bus išrašomi atsitiktinai, ar rankiniu būdu. Galiausiai, mokiniai yra išrašomi lentelėje su galutiniais balais, kurie apskaičiuojami dviem būdais, pagal vartotojo pasirinkimą.
 
-## v1.5 (naujausia)
+## v2.0 (naujausia)
+Nuo šiol programos apibendrinimą galima surasti doxygen dokumentacijoje _(doxygen/html)_ ir pačią programą paleisti su **ProgramosSetup.msi** automatinio įdiegimo failo.
+
+### Vykdymas su automatiniu įdiegimo failu (Windows)
+
+- Parsisiųsti failus iš [repozicijos](https://github.com/N0rmalus/Dienynas2)
+- Paleisti **ProgramosSetup.msi** failą
+- Pasirinkti programos instaliavimo vietą
+- BOOM
+
+## v1.5
 Šioje versijoje įvesta nauja klasė **class Zmogas**, kuri yra abstrakti bazinė klasė klasei **class Studentas**. Šioje naujoje klasėje deklaruojama grynoji virtuali funkcija **rasoInfo()**, o v1.2 versioje buvę atributai **string vardas** ir **string pavarde** yra taip pat perkelti į šią naująją klasę.
 
 ### Vykdymas su makefile (Windows)

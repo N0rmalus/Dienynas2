@@ -1,0 +1,104 @@
+\hypertarget{header_8h_source}{}\doxysection{C\+:/\+Users/rokas/\+Desktop/\+Desktop/\+Studijoms/\+Objektinis/v20/header.h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}libraries.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Abstract\ base\ class\ Human}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zmogas}{Zmogas}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ vardas;}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogas}{Zmogas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ vardas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ pavarde)}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ :\ vardas(vardas),\ pavarde(pavarde)\ \{\}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getteriai}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getVardas()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ vardas;\ \}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getPavarde()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pavarde;\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Virtuali\ Funkcija}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ rasoInfo(ofstream\&\ raso)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destruktorius}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_zmogas}{\string~Zmogas}}()\ \{\}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Derived\ class\ Student\ from\ Human}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_studentas}{Studentas}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zmogas}{Zmogas}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ vector<int>\ nd\_rezultatai;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ egzamino\_rezultatas;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ galutinis\_vid,\ galutinis\_med;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ R05\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ vardas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ pavarde,\ \textcolor{keyword}{const}\ vector<int>\&\ nd\_rezultatai,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ egzamino\_rezultatas,\ \textcolor{keywordtype}{double}\ galutinis\_vid,\ \textcolor{keywordtype}{double}\ galutinis\_med)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_zmogas}{Zmogas}}(vardas,\ pavarde),\ nd\_rezultatai(nd\_rezultatai),\ egzamino\_rezultatas(egzamino\_rezultatas),}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_vid(galutinis\_vid),\ galutinis\_med(galutinis\_med)\ \{\}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_studentas}{Studentas}}\&\ other)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_zmogas}{Zmogas}}(other),\ nd\_rezultatai(other.nd\_rezultatai),\ egzamino\_rezultatas(other.egzamino\_rezultatas),}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_vid(other.galutinis\_vid),\ galutinis\_med(other.galutinis\_med)\ \{\}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_studentas}{Studentas}}(\mbox{\hyperlink{class_studentas}{Studentas}}\&\&\ other)\ noexcept}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_zmogas}{Zmogas}}(move(other)),\ nd\_rezultatai(move(other.nd\_rezultatai)),}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ egzamino\_rezultatas(other.egzamino\_rezultatas),\ galutinis\_vid(other.galutinis\_vid),}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_med(other.galutinis\_med)\ \{\}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_studentas}{Studentas}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_studentas}{Studentas}}\&\ other)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Zmogas::operator=(other);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nd\_rezultatai\ =\ other.nd\_rezultatai;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ egzamino\_rezultatas\ =\ other.egzamino\_rezultatas;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_vid\ =\ other.galutinis\_vid;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_med\ =\ other.galutinis\_med;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{class_studentas}{Studentas}}\&\ operator=(\mbox{\hyperlink{class_studentas}{Studentas}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Zmogas::operator=(move(other));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nd\_rezultatai\ =\ move(other.nd\_rezultatai);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ egzamino\_rezultatas\ =\ other.egzamino\_rezultatas;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_vid\ =\ other.galutinis\_vid;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galutinis\_med\ =\ other.galutinis\_med;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Setteriai}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setNdRezultatai(\textcolor{keyword}{const}\ vector<int>\&\ nd\_rezultatai)\ \{\ this-\/>nd\_rezultatai\ =\ nd\_rezultatai;\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setEgzaminoRezultatas(\textcolor{keywordtype}{int}\ egzamino\_rezultatas)\ \{\ this-\/>egzamino\_rezultatas\ =\ egzamino\_rezultatas;\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setGalutinisVid(\textcolor{keywordtype}{double}\ galutinis\_vid)\ \{\ this-\/>galutinis\_vid\ =\ galutinis\_vid;\ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setGalutinisMed(\textcolor{keywordtype}{double}\ galutinis\_med)\ \{\ this-\/>galutinis\_med\ =\ galutinis\_med;\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getteriai}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ vector<int>\ getNdRezultatai()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nd\_rezultatai;\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getEgzaminoRezultatas()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ egzamino\_rezultatas;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getGalutinisVid()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galutinis\_vid;\ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getGalutinisMed()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galutinis\_med;\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perrašyta\ printInfo\ funkcija\ iš\ bazinės\ klasės}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ rasoInfo(ofstream\&\ raso)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}Vardas:\ "{}}\ <<\ vardas\ <<\ endl;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}Pavarde:\ "{}}\ <<\ pavarde\ <<\ endl;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}ND\ rezultatai:\ "{}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ rezultatas\ :\ nd\_rezultatai)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ rezultatas\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ endl\ <<\ \textcolor{stringliteral}{"{}Egzamino\ rezultatas:\ "{}}\ <<\ egzamino\_rezultatas\ <<\ endl;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Vid.):\ "{}}\ <<\ galutinis\_vid\ <<\ endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Med.):\ "{}}\ <<\ galutinis\_med\ <<\ endl;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ raso\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ endl;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destruktorius}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_studentas}{\string~Studentas}}()\ \{\}}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ generatorius(\textcolor{keywordtype}{string}\ failas,\ \textcolor{keywordtype}{int}\ kiek\_studentu,\ \textcolor{keywordtype}{int}\ kiek\_nd);}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ failo\_skaitymas(vector<Studentas>\&\ studentai);}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ atsitiktiniai\_rez(\textcolor{keywordtype}{string}\ vardas,\ \textcolor{keywordtype}{string}\ pavarde,\ \textcolor{keywordtype}{int}\ kiek\_nd,\ vector<Studentas>\&\ studentai);}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ rasomi\_rez(\textcolor{keywordtype}{string}\ vardas,\ \textcolor{keywordtype}{string}\ pavarde,\ \textcolor{keywordtype}{bool}\ is\_naujo2,\ vector<Studentas>\&\ studentai);}
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ galutinis(vector<Studentas>\&\ studentai);}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ isvesti(vector<Studentas>\&\ studentai);}
+
+\end{DoxyCode}
